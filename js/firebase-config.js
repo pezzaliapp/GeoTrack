@@ -21,10 +21,9 @@ const firebaseConfig = {
    --------------------------------------------------------------------------
    Only the email(s) listed here are allowed to access the dashboard.
    Any other authenticated user is signed out immediately on arrival.
-   Change this to YOUR admin email before deploying.
    ────────────────────────────────────────────────────────────────────────── */
 const ADMIN_EMAILS = [
-  "admin@pezzaliapp.com"   // ← SOSTITUISCI con la tua email admin
+  "pezzalialessandro@gmail.com"
 ];
 
 /* ──────────────────────────────────────────────────────────────────────────
