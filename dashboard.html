@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>GeoTrack · Dashboard</title>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+<!-- Leaflet core -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<!-- Marker cluster -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- Loader -->
+<div id="loader" class="loader">
+  <div>
+    <div class="loader-spinner"></div>
+    <div class="loader-text">ESTABLISHING LINK…</div>
+  </div>
+</div>
+
+<!-- Dashboard -->
+<div class="dashboard">
+
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="topbar-brand">
+      <div class="brand-mark"></div>
+      <span class="brand-name">GeoTrack</span>
+      <span class="brand-tag">LIVE</span>
+    </div>
+
+    <div class="topbar-meta">
+      <span>FEED</span>
+      <span class="sep">/</span>
+      <span><span id="visit-count">000</span> entries</span>
+      <span class="sep">·</span>
+      <span class="live-clock" id="live-clock">—</span>
+    </div>
+
+    <div class="topbar-user">
+      <span class="user-email" id="user-email">—</span>
+      <button id="logout-btn" class="btn btn-sm btn-ghost">LOGOUT</button>
+    </div>
+  </header>
+
+  <!-- Main grid: left panel + map + right panel -->
+  <div class="main-grid">
+
+    <!-- LEFT PANEL -->
+    <aside class="panel panel-left">
+
+      <div class="panel-section">
+        <div class="panel-heading">Overview</div>
+        <div class="stats-grid">
+          <div class="stat">
+            <div class="stat-value" id="stat-total">0</div>
+            <div class="stat-label">Visite totali</div>
+          </div>
+          <div class="stat amber">
+            <div class="stat-value" id="stat-today">0</div>
+            <div class="stat-label">Oggi</div>
+          </div>
+          <div class="stat blue">
+            <div class="stat-value" id="stat-24h">0</div>
+            <div class="stat-label">Ultime 24h</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value" id="stat-countries">0</div>
+            <div class="stat-label">Paesi unici</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <div class="panel-heading">Intervallo temporale</div>
+        <div class="filter-group">
+          <button class="filter-chip active" data-filter="all">Tutto</button>
+          <button class="filter-chip" data-filter="today">Oggi</button>
+          <button class="filter-chip" data-filter="24h">24h</button>
+          <button class="filter-chip" data-filter="7d">7g</button>
+          <button class="filter-chip" data-filter="30d">30g</button>
+          <button class="filter-chip" data-filter="custom">Custom</button>
+        </div>
+        <div class="range-inputs">
+          <input type="date" id="date-from" aria-label="Da" />
+          <input type="date" id="date-to"   aria-label="A" />
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <div class="panel-heading">Vista mappa</div>
+        <div class="view-toggle">
+          <button class="filter-chip active" data-view="markers">Marker</button>
+          <button class="filter-chip" data-view="heatmap">Heatmap</button>
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <div class="panel-heading">Azioni</div>
+        <div class="action-list">
+          <button class="btn btn-sm" id="recenter">⊕ Ricentra mappa</button>
+          <button class="btn btn-sm" id="export-csv">↓ Esporta CSV</button>
+          <button class="btn btn-sm" id="export-json">↓ Esporta JSON</button>
+          <button class="btn btn-sm btn-danger" id="clear-all">✕ Elimina filtrati</button>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- MAP -->
+    <div class="map-wrap">
+      <div id="map"></div>
+      <div class="map-overlay-corner">
+        GEOSPATIAL FEED · <strong>LIVE</strong>
+      </div>
+    </div>
+
+    <!-- RIGHT PANEL: activity feed -->
+    <aside class="panel panel-right">
+      <div class="panel-section">
+        <div class="panel-heading">
+          <span>Attività recente</span>
+          <span class="panel-heading-count">LIVE</span>
+        </div>
+        <div id="activity-list" class="activity-list">
+          <div class="empty-state">Caricamento…</div>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="toast" class="toast"></div>
+
+<!-- Leaflet + plugins -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+<script src="https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+
+<!-- App -->
+<script src="js/firebase-config.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>

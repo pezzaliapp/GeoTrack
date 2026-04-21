@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>GeoTrack · Autenticazione</title>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<main class="login-shell">
+  <div class="login-card">
+    <div class="login-brand">
+      <div class="login-brand-mark"></div>
+      <span class="login-brand-text">GeoTrack // v1.0</span>
+    </div>
+
+    <h1 class="login-title">Accesso Console</h1>
+    <p class="login-subtitle">Geospatial Intelligence Dashboard</p>
+
+    <form id="login-form" autocomplete="off">
+      <div class="field">
+        <label for="email">Email operatore</label>
+        <input id="email" type="email" required autocomplete="username" spellcheck="false" />
+      </div>
+
+      <div class="field">
+        <label for="password">Password</label>
+        <input id="password" type="password" required autocomplete="current-password" />
+      </div>
+
+      <button id="login-submit" class="btn btn-primary" type="submit">ACCEDI →</button>
+
+      <div id="login-alert" class="alert" role="alert"></div>
+    </form>
+
+    <div class="login-footer">
+      <span class="status-dot"></span>
+      SECURE CHANNEL · <span id="utc-clock">—</span>
+    </div>
+  </div>
+</main>
+
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+
+<!-- App -->
+<script src="js/firebase-config.js"></script>
+<script src="js/login.js"></script>
+</body>
+</html>

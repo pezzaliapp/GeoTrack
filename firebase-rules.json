@@ -1,0 +1,25 @@
+{
+  "rules": {
+    "geoVisits": {
+      ".read": "auth != null",
+      ".write": "false",
+      "$id": {
+        ".write": "!data.exists() && newData.exists()",
+        ".validate": "newData.hasChildren(['lat', 'lon', 'timestamp'])",
+        "lat":        { ".validate": "newData.isNumber() && newData.val() >= -90  && newData.val() <= 90" },
+        "lon":        { ".validate": "newData.isNumber() && newData.val() >= -180 && newData.val() <= 180" },
+        "timestamp":  { ".validate": "newData.isString() && newData.val().length <= 40" },
+        "location":   { ".validate": "newData.isString() && newData.val().length <= 200" },
+        "ip_city":    { ".validate": "newData.isString() && newData.val().length <= 120" },
+        "ip_region":  { ".validate": "newData.isString() && newData.val().length <= 120" },
+        "ip_country": { ".validate": "newData.isString() && newData.val().length <= 120" },
+        "ip_org":     { ".validate": "newData.isString() && newData.val().length <= 200" },
+        "lang":       { ".validate": "newData.isString() && newData.val().length <= 16" },
+        "ua":         { ".validate": "newData.isString() && newData.val().length <= 250" },
+        "referrer":   { ".validate": "newData.isString() && newData.val().length <= 250" },
+        "page":       { ".validate": "newData.isString() && newData.val().length <= 250" },
+        "$other":     { ".validate": "false" }
+      }
+    }
+  }
+}
