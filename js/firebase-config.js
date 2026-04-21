@@ -7,7 +7,7 @@
    ========================================================================== */
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDBxmabJywcziV-k6n0fO04z6Y2ZKpnOEs",
+  apiKey: "AIzaSyBz4A6zDqW8QGLbmlxRf7E4PR4mwCZNwko",
   authDomain: "pezzaliapp-analytics.firebaseapp.com",
   databaseURL: "https://pezzaliapp-analytics-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "pezzaliapp-analytics",
