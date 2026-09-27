@@ -543,6 +543,12 @@ body::after {
   font-family: var(--font-mono) !important;
 }
 
+/* Darken standard OpenStreetMap raster tiles locally.
+   This keeps the GeoTrack dark UI without requiring a basemap API key. */
+.leaflet-tile-pane {
+  filter: invert(1) hue-rotate(180deg) brightness(0.62) contrast(1.15) saturate(0.35);
+}
+
 .leaflet-popup-content-wrapper {
   background: var(--bg-2) !important;
   color: var(--text-0) !important;
