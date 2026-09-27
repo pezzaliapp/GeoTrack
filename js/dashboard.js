@@ -58,10 +58,11 @@
       attributionControl: true
     }).setView([30, 10], 2);
 
-    // Dark tiles (CARTO)
-    L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &middot; &copy; <a href="https://carto.com/attributions">CARTO</a>',
-      subdomains: "abcd",
+    // OpenStreetMap tiles — no API key required.
+    // The dark appearance is applied locally via CSS, so GeoTrack no longer
+    // depends on CARTO basemap authentication.
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>',
       maxZoom: 19
     }).addTo(map);
 
